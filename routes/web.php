@@ -32,6 +32,10 @@ Route::middleware([
     Route::get('/dashboard', function (Request $request) {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::get('/apps', function (Request $request) {
+        return Inertia::render('Apps');
+    })->name('apps');
 });
 
 Route::middleware([    
