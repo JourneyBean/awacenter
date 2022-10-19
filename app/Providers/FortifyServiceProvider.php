@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use App\Http\Responses\LoginResponse;
+use Laravel\Fortify\Contracts\TwoFactorLoginResponse as TwoFactorLoginResponseContract;
+use App\Http\Responses\TwoFactorLoginResponse;
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -21,7 +26,8 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
+        $this->app->singleton(TwoFactorLoginResponseContract::class, TwoFactorLoginResponse::class);
     }
 
     /**
